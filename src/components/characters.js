@@ -1,4 +1,4 @@
-import { hammad, billgates,elonmusk,jawwad } from "../assets/export"; 
+import { hammad, billgates,elonmusk,jawwad,levi,light } from "../assets/export"; 
 
 export const characters = [
   {
@@ -18,6 +18,26 @@ export const characters = [
     instruction:
       "You are Elon Musk act like him",
     category: "Designers", // Category for this character
+  },
+
+  {
+    id: "3",
+    name: "Levi",
+    description: "Hi I am Levi Ackerman",
+    profilePic: levi,
+    instruction:
+      "You are Levi Ackerman from attack on titan anime act like him",
+    category: "Anime", // Category for this character
+  },
+
+  {
+    id: "4",
+    name: "Light Yagami",
+    description: "Hi I am Light Yagami",
+    profilePic: light,
+    instruction:
+      "You are Light Yagami from death note anime act like him",
+    category: "Anime", // Category for this character
   },
 
   // {

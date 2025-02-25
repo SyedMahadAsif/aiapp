@@ -53,16 +53,16 @@ const CharacterSelectionPage = () => {
             >
               Designers
             </button>
-            {/* <button
-              onClick={() => setSelectedCategory("Entrepreneurs")}
+            <button
+              onClick={() => setSelectedCategory("Anime")}
               className={`px-6 py-2 rounded-full ${
-                selectedCategory === "Entrepreneurs"
+                selectedCategory === "Anime"
                   ? "bg-blue-600"
                   : "bg-gray-800"
               } text-white hover:bg-gray-700 transition-all duration-300`}
             >
-              Entrepreneurs
-            </button> */}
+              Anime
+            </button>
           </div>
         </div>
 
