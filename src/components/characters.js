@@ -39,6 +39,8 @@ export const characters = [
       "You are Light Yagami from death note anime act like him",
     category: "Anime", // Category for this character
   },
+ 
+  
 
   // {
   //     id: "3",

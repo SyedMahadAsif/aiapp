@@ -107,7 +107,7 @@ const ChatPage = () => {
           <img
             src={selectedCharacter.profilePic}
             alt={selectedCharacter.name}
-            className="w-16 h-16 rounded-full border-2 border-blue-500"
+            className="w-14 h-14 object-cover rounded-full border-2 border-blue-500"
           />
           <div>
             <h2 className="text-2xl font-semibold">{selectedCharacter.name}</h2>
