@@ -4,6 +4,7 @@ import elonmusk from "../assets/elonmusk.jpg";
 import jawwad from "../assets/jawwad.png";
 import levi from "../assets/levi.jpg";
 import light from "../assets/light.jpg";
+import minion from "../assets/minion.jpg";
 
 
 
@@ -15,5 +16,6 @@ export {
     jawwad,
     levi,
     light,
+    minion,
     
 };

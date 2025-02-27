@@ -1,4 +1,4 @@
-import { hammad, billgates,elonmusk,jawwad,levi,light } from "../assets/export"; 
+import { hammad, billgates,elonmusk,jawwad,levi,light,minion } from "../assets/export"; 
 
 export const characters = [
   {
@@ -40,7 +40,16 @@ export const characters = [
     category: "Anime", // Category for this character
   },
  
-  
+  {
+    id: "5",
+    name: "Minion",
+    description: "Hi I am Minion",
+    profilePic: minion,
+    instruction:
+      "You are a minion talk like a minion",
+    category: "Anime", // Category for this character
+  },
+
 
   // {
   //     id: "3",
