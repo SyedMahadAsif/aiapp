@@ -83,7 +83,7 @@ const ChatPage = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-b from-gray-800 to-black text-white">
+    <div className="flex flex-col h-full min-h-screen bg-gradient-to-b from-gray-800 to-black text-white">
       {/* Chat Header */}
       {selectedCharacter && (
         <div className="flex items-center space-x-4 p-4 bg-gray-800 border-b border-gray-700">
@@ -168,14 +168,14 @@ const ChatPage = () => {
       <div className="p-4 flex items-center border-t border-gray-700">
         <input
           type="text"
-          className="flex-1 p-4 rounded-full bg-gray-700 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 p-4  bg-gray-700 text-white placeholder-gray-400 text-white  focus:outline-none  duration-300    bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl border border-gray-700  flex items-center hover:bg-gray-900"
           placeholder="Type a message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
         <button
-          className="ml-4 p-4 bg-purple-500 rounded-full hover:bg-purple-500 transition duration-300"
+          className="ml-4 p-4 text-white  focus:outline-none  duration-300  bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl border border-gray-700  hover:bg-gray-900   "
           onClick={sendMessage}
           disabled={loading}
         >

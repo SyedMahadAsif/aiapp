@@ -30,8 +30,8 @@ const ExplorePage = () => {
     <div className="flex flex-col h-full min-h-screen bg-[#111111] text-white overflow-auto">
       {/* Main Content */}
       <div
-        className={`w-full h-full  mx-auto p-8 flex-1 mb-16 ${
-          isSearchVisible ? "pb-24" : "" // Add extra padding when search bar is visible
+        className={`w-full h-full mx-auto lg:w-[90%] p-8 flex-1 mb-16 ${
+          isSearchVisible ? "pb-32" : "pb-16" // Adjust padding when search bar is visible
         }`}
       >
         <h3 className="text-2xl font-bold text-white text-left">Explore</h3>
@@ -66,12 +66,12 @@ const ExplorePage = () => {
         </div>
 
         {/* Display Filtered Characters */}
-        <div className="grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-4 gap-6">
           {filteredCharacters.length > 0 ? (
             filteredCharacters.map((character) => (
               <div
                 key={character.id}
-                className="group relative  overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl  bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl  border border-gray-700   hover:bg-gray-900   duration-300`"
+                className="group relative overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl border border-gray-700 hover:bg-gray-900 duration-300"
               >
                 <Link
                   to={`/chat/${character.id}`} // Link to the chat page with the character's id
@@ -101,37 +101,42 @@ const ExplorePage = () => {
       </div>
 
       {/* Bottom Navigation Bar */}
-      <div className="fixed bottom-0 w-full  p-4 flex justify-around  items-center  bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg border border-gray-700 text-white px-5 py-3  hover:bg-gray-900 transition-colors">
-        <Link
-          to="/selectcharacter"
-          className="flex flex-col items-center hover:text-blue-600 transition-all duration-300"
-        >
-          <RiHome2Line className="w-6 h-6" />
-          {/* <span className="text-sm">Home</span> */}
-        </Link>
-        <button
-          onClick={handleSearchClick}
-          className="flex flex-col items-center hover:text-blue-600 transition-all duration-300"
-        >
-          <IoSearchOutline className="w-6 h-6" />
-          {/* <span className="text-sm">Search</span> */}
-        </button>
-        <Link
-          to="/about"
-          className="flex flex-col items-center hover:text-blue-600 transition-all duration-300"
-        >
-          <IoIosInformationCircleOutline className="w-6 h-6" />
-          {/* <span className="text-sm">About</span> */}
-        </Link>
-      </div>
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[90%] flex justify-between items-center bg-gray-800 bg-opacity-50 backdrop-blur-lg p-3 rounded-2xl shadow-lg">
+  {/* Explore Button with Text */}
+  <Link
+    to="/selectcharacter"
+    className="flex justify-center items-center space-x-2 w-24 h-12 bg-gray-700 rounded-xl transition-all hover:bg-gray-600"
+  >
+    <RiHome2Line className="w-6 h-6 text-white" />
+    <span className="text-white text-sm">Home</span>
+  </Link>
+
+  {/* Center Search Button */}
+  <button
+    onClick={handleSearchClick}
+    className="flex justify-center items-center w-16 h-16 bg-gray-700 rounded-full shadow-xl transition-all hover:bg-gray-600"
+  >
+    <IoSearchOutline className="w-7 h-7 text-white" />
+    
+  </button>
+
+  {/* About Button with Text */}
+  <Link
+    to="/about"
+    className="flex justify-center items-center space-x-2 w-24 h-12 bg-gray-700 rounded-xl transition-all hover:bg-gray-600"
+  >
+    <IoIosInformationCircleOutline className="w-6 h-6 text-white" />
+    <span className="text-white text-sm">About</span>
+  </Link>
+</div>
 
       {/* Search Bar at the Bottom */}
       {isSearchVisible && (
-        <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-md p-4">
+        <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 w-full max-w-md p-4">
           <input
             type="text"
             placeholder="🔍 Search characters..."
-            className="w-full p-4 rounded-full backdrop-blur-md bg-transparent border text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300"
+            className="w-full p-4 rounded-2xl bg-gray-800 bg-opacity-50 backdrop-blur-lg p-3 mb-1 rounded-2xl shadow-lg backdrop-blur-lg bg-gray-800  text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300"
             onChange={(e) => setSearchTerm(e.target.value)}
             value={searchTerm}
           />

@@ -1,107 +1,113 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { FaMagic, FaStar, FaUserFriends, FaPaintBrush, FaRocket } from "react-icons/fa";
 import { RiHome2Line } from "react-icons/ri";
+import { IoIosInformationCircleOutline } from "react-icons/io";
+import { IoSearchOutline } from "react-icons/io5";
+import { MdOutlineExplore } from "react-icons/md";
+
+
 
 const About = () => {
+  const [animationCompleted, setAnimationCompleted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationCompleted(true);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="flex flex-col min-h-screen bg-[#0a0a0a] text-white">
-      <div className="w-full max-w-4xl mx-auto p-8 flex-1">
-        <h1 className="text-4xl font-semibold text-white mb-6">
-          About This WebApp
-        </h1>
-        <p className="text-lg text-gray-400 mb-6">
-          Welcome to the MultiverseChat! This platform allows you to chat with
-          your favorite celebrities, anime characters, and AI-generated personas
-          from a variety of categories. Whether you're looking to chat with a
-          developer, designer, anime character, or an entrepreneur, you’ll find
-          them all in one place.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-white mb-4">What is it?</h3>
-        <p className="text-lg text-gray-400 mb-6">
-          This app lets users engage in dynamic, interactive conversations with
-          a wide range of characters. The web app is designed to offer a unique
-          experience by allowing users to chat with popular characters, ranging
-          from well-known celebrities to AI-generated personalities. You can
-          explore different categories, from developers and designers to anime
-          characters and entrepreneurs.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-white mb-4">Features</h3>
-        <ul className="list-disc pl-6 text-lg text-gray-400 mb-6">
-          <li>
-            Search and chat with a variety of characters, including celebrities,
-            anime characters, and more.
-          </li>
-          <li>
-            Filter characters by categories like Developers, Designers, Anime,
-            Entrepreneurs, etc.
-          </li>
-          <li>
-            Interact with AI-generated characters that respond based on their
-            category and background.
-          </li>
-          <li>
-            Responsive design ensures a seamless experience on both mobile and
-            desktop devices.
-          </li>
-        </ul>
-
-        <h3 className="text-2xl font-semibold text-white mb-4">How It Works</h3>
-        <p className="text-lg text-gray-400 mb-6">
-          The app allows you to browse through a collection of characters from
-          different categories. You can select a category that interests you,
-          search for a specific character, or simply explore random profiles.
-          Each character has a profile with their name, picture, and a brief
-          description, and you can then start a conversation with them. The
-          experience is interactive, and each character responds based on their
-          unique background and persona.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-white mb-4">Built With</h3>
-        <p className="text-lg text-gray-400 mb-6">
-          This app was built using modern web technologies such as React, React
-          Router, and Tailwind CSS for styling. It’s designed for performance
-          and an intuitive user experience, providing a fast, responsive
-          interface across devices.
-        </p>
-
-        <h3 className="text-2xl font-semibold text-white mb-4">
-          Who Developed This?
-        </h3>
-        <p className="text-lg text-gray-400 mb-6">
-          This web app was created by <strong>Mahad</strong>, a passionate
-          developer with a love for building interactive experiences. If you
-          have any questions or suggestions, feel free to reach out—Mahad would
-          love to hear from you!
-        </p>
-
-        <div className="mt-6">
-          <Link
-            to="/explore"
-            className="text-lg font-semibold text-blue-600 hover:text-blue-500 transition-all duration-300"
-          >
-            Start Exploring
-          </Link>
-        </div>
+    <div className="w-full h-full bg-[#111111] min-h-screen text-white flex flex-col items-center justify-center px-4 overflow-auto">
+      {/* Glowing Logo */}
+      <div className="text-white text-5xl sm:text-7xl animate-pulse mb-4">
+        <FaMagic className="drop-shadow-lg" />
       </div>
 
+      {/* Title */}
+      <h1 className="text-2xl sm:text-3xl font-bold text-white text-center">
+        MultiverseChat+
+      </h1>
+      <p className="text-gray-400 mt-2 text-sm sm:text-md text-center">
+        Exclusive, experimental, and pre-release features
+      </p>
+
+      {/* Features Section */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 w-full max-w-3xl mb-16">
+        <FeatureCard
+          icon={<FaPaintBrush />}
+          title="Custom Themes"
+          description="Personalize your chat with unique themes"
+        />
+        <FeatureCard
+          icon={<FaStar />}
+          title="VIP Badge"
+          description="Get a premium badge on your profile"
+        />
+        <FeatureCard
+          icon={<FaUserFriends />}
+          title="Best Friend Pin"
+          description="Keep your top conversation at the top"
+        />
+        <FeatureCard
+          icon={<FaRocket />}
+          title="Early Access"
+          description="Be the first to test new AI features"
+        />
+        
+      </div>
+
+      {/* CTA Button */}
+      {/* <Link
+        to="/selectcharacter"
+        className="mt-6 px-5 py-3  text-white bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl p-6 border border-gray-700 text-white px-5 py-3  hover:bg-gray-900 transition-colors w-full sm:w-auto text-center"
+      >
+        Start Chatting
+      </Link> */}
+
+
       {/* Bottom Navigation Bar */}
-      {/* <div className="fixed bottom-0 w-full p-4 flex justify-around items-center backdrop-blur-md text-white">
+            <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[90%] flex justify-between items-center bg-gray-800 bg-opacity-50 backdrop-blur-lg p-3 rounded-2xl shadow-lg">
+        {/* Explore Button with Text */}
         <Link
           to="/selectcharacter"
-          className="flex flex-col items-center hover:text-blue-600 transition-all duration-300"
+          className="flex justify-center items-center space-x-2 w-24 h-12 bg-gray-700 rounded-xl transition-all hover:bg-gray-600"
         >
-          <RiHome2Line className="w-6 h-6" />
+          <RiHome2Line className="w-6 h-6 text-white" />
+          <span className="text-white text-sm">Home</span>
         </Link>
-      </div> */}
-
-      {/* Footer */}
-      <footer className="bg-[#1a1a1a] py-4 text-center text-gray-400">
-        <p>&copy; 2025 MultiverseChat. All rights reserved.</p>
-      </footer>
+      
+        <Link
+          to="/selectcharacter"
+          className="flex justify-center items-center space-x-2 w-24 h-12  rounded-xl transition-all hover:bg-gray-600"
+        >
+          {/* <RiHome2Line className="w-6 h-6 text-white" /> */}
+          <span className="text-white text-sm">|</span>
+        </Link>
+      
+        {/* About Button with Text */}
+        <Link
+          to="/explore"
+          className="flex justify-center items-center space-x-2 w-24 h-12 bg-gray-700 rounded-xl transition-all hover:bg-gray-600"
+        >
+          <MdOutlineExplore className="w-6 h-6 text-white" />
+          <span className="text-white text-sm">Explore</span>
+        </Link>
+      </div>
     </div>
   );
 };
+
+// Feature Card Component
+const FeatureCard = ({ icon, title, description }) => (
+  <div className="flex items-center bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl p-6 border border-gray-700 text-white px-5 py-3  hover:bg-gray-900 transition-colors">
+    <div className="text-white text-2xl sm:text-3xl">{icon}</div>
+    <div className="ml-3">
+      <h3 className="text-white font-semibold text-sm sm:text-base">{title}</h3>
+      <p className="text-gray-400 text-xs sm:text-sm">{description}</p>
+    </div>
+  </div>
+);
 
 export default About;

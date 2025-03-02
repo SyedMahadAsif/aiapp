@@ -5,7 +5,7 @@ import jawwad from "../assets/jawwad.png";
 import levi from "../assets/levi.jpg";
 import light from "../assets/light.jpg";
 import minion from "../assets/minion.jpg";
-
+import higherlower from "../assets/higherlower.png";
 
 
 
@@ -17,5 +17,6 @@ export {
     levi,
     light,
     minion,
+    higherlower,
     
 };

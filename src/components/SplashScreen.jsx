@@ -1,78 +1,77 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { billgates, elonmusk, levi, light } from "../assets/export";
+import { FaMagic, FaStar, FaUserFriends, FaPaintBrush, FaRocket } from "react-icons/fa";
 
 const SplashScreen = () => {
   const [animationCompleted, setAnimationCompleted] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Array of images to rotate through
-  const images = [billgates, elonmusk, levi, light];
-
-  // Change the image every second
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 1000); // Change every 1000ms (1 second)
-
-    return () => clearInterval(timer); // Cleanup the interval when the component unmounts
-  }, []);
-
-  // Trigger the animation after a short delay
   useEffect(() => {
     const timer = setTimeout(() => {
-      setAnimationCompleted(true); // After delay, trigger the animation
-    }, 1200); // Delay to simulate loading animation
-
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
+      setAnimationCompleted(true);
+    }, 1200);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="w-full h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white flex justify-center items-center flex-col relative overflow-hidden">
-      {/* Full-screen background image */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <img
-          src={images[currentImageIndex]}
-          alt="Trending character"
-          className="w-full h-full object-cover opacity-20"
+    <div className="w-full h-screen bg-[#111111] text-white flex flex-col items-center justify-center px-4">
+      {/* Glowing Logo */}
+      <div className="text-white text-5xl sm:text-7xl animate-pulse mb-4">
+        <FaMagic className="drop-shadow-lg" />
+      </div>
+
+      {/* Title */}
+      <h1 className="text-2xl sm:text-3xl font-bold text-white text-center">
+        MultiverseChat+
+      </h1>
+      <p className="text-gray-400 mt-2 text-sm sm:text-md text-center">
+        Exclusive, experimental, and pre-release features
+      </p>
+
+      {/* Features Section */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 w-full max-w-3xl">
+        <FeatureCard
+          icon={<FaPaintBrush />}
+          title="Custom Themes"
+          description="Personalize your chat with unique themes"
         />
+        <FeatureCard
+          icon={<FaStar />}
+          title="VIP Badge"
+          description="Get a premium badge on your profile"
+        />
+        <FeatureCard
+          icon={<FaUserFriends />}
+          title="Best Friend Pin"
+          description="Keep your top conversation at the top"
+        />
+        <FeatureCard
+          icon={<FaRocket />}
+          title="Early Access"
+          description="Be the first to test new AI features"
+        />
+        
       </div>
 
-      {/* Logo and Text */}
-      <div className="z-10 flex flex-col items-center justify-center text-center">
-        <div
-          className={`text-5xl font-extrabold text-white mb-4 transition-all duration-1000 ${
-            animationCompleted
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          MultiverseChat
-        </div>
-
-        {/* Description text */}
-        <p
-          className={`text-xl font-medium text-white mb-4 transition-all duration-1000 ${
-            animationCompleted
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          Enter a world of endless conversations with your favorite characters.
-        </p>
-
-        {/* Start Now Button */}
-        <Link
-          to="/selectcharacter"
-          className={`px-5 py-2 bg-blue-500 text-white text-md rounded-full shadow-lg hover:scale-105 transition-all duration-300 transform ${
-            animationCompleted ? "opacity-100 scale-100" : "opacity-0 scale-110"
-          }`}
-        >
-          Start Chatting
-        </Link>
-      </div>
+      {/* CTA Button */}
+      <Link
+        to="/selectcharacter"
+        className="mt-6 px-5 py-3 text-white bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl p-6 border border-gray-700 text-white px-5 py-3  hover:bg-gray-900 transition-colors w-full sm:w-auto text-center"
+      >
+        Start Chatting
+      </Link>
     </div>
   );
 };
+
+// Feature Card Component
+const FeatureCard = ({ icon, title, description }) => (
+  <div className="flex items-center bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg rounded-xl p-6 border border-gray-700 text-white px-5 py-3  hover:bg-gray-900 transition-colors">
+    <div className="text-white text-2xl sm:text-3xl">{icon}</div>
+    <div className="ml-3">
+      <h3 className="text-white font-semibold text-sm sm:text-base">{title}</h3>
+      <p className="text-gray-400 text-xs sm:text-sm">{description}</p>
+    </div>
+  </div>
+);
 
 export default SplashScreen;

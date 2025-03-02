@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { MdOutlineExplore } from "react-icons/md";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import { RiHome2Line } from "react-icons/ri";
+
 
 import { useState } from "react";
 import { FaSearch, FaCompass, FaInfoCircle } from "react-icons/fa"; // Import specific icons from react-icons
@@ -40,7 +42,7 @@ const CharacterSelectionPage = () => {
   return (
     <div className="flex flex-col h-full min-h-screen bg-[#111111] text-white overflow-auto">
       <div
-        className={`w-full h-full  mx-auto p-8 flex-1 mb-16 ${
+        className={`w-full h-full lg:w-[90%]  mx-auto p-8 flex-1 mb-16 ${
           isSearchVisible ? "pb-24" : ""
         }`}
       >
@@ -142,41 +144,47 @@ const CharacterSelectionPage = () => {
       </div>
 
       {/* Bottom Navigation Bar */}
-      <div className="fixed bottom-0 w-full  p-4 flex justify-around items-center  text-white bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg border border-gray-700  px-5 py-3 hover:bg-gray-900 transition-colors">
-        <Link
-          to="/explore"
-          className="flex flex-col items-center hover:text-blue-600 transition-all duration-300"
-        >
-          <MdOutlineExplore className="w-6 h-6" />
-          {/* <span className="text-sm">Explore</span> */}
-        </Link>
-        <button
-          onClick={handleSearchClick}
-          className="flex flex-col items-center hover:text-blue-600 transition-all duration-300"
-        >
-          <IoSearchOutline className="w-6 h-6" />
-          {/* <span className="text-sm">Search</span> */}
-        </button>
-        <Link
-          to="/about"
-          className="flex flex-col items-center hover:text-blue-600 transition-all duration-300"
-        >
-          <IoIosInformationCircleOutline className="w-6 h-6" />
-          {/* <span className="text-sm">About</span> */}
-        </Link>
-      </div>
+      {/* Bottom Navigation Bar */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[90%] flex justify-between items-center bg-gray-800 bg-opacity-50 backdrop-blur-lg p-3 rounded-2xl shadow-lg">
+  {/* Explore Button with Text */}
+  <Link
+    to="/explore"
+    className="flex justify-center items-center space-x-2 w-24 h-12 bg-gray-700 rounded-xl transition-all hover:bg-gray-600"
+  >
+    <MdOutlineExplore className="w-6 h-6 text-white" />
+    <span className="text-white text-sm">Explore</span>
+  </Link>
+
+  {/* Center Search Button */}
+  <button
+    onClick={handleSearchClick}
+    className="flex justify-center items-center w-16 h-16 bg-gray-700 rounded-full shadow-xl transition-all hover:bg-gray-600"
+  >
+    <IoSearchOutline className="w-7 h-7 text-white" />
+  </button>
+
+  {/* About Button with Text */}
+  <Link
+    to="/about"
+    className="flex justify-center items-center space-x-2 w-24 h-12 bg-gray-700 rounded-xl transition-all hover:bg-gray-600"
+  >
+    <IoIosInformationCircleOutline className="w-6 h-6 text-white" />
+    <span className="text-white text-sm">About</span>
+  </Link>
+</div>
+
 
       {/* Search Bar at the Bottom */}
       {isSearchVisible && (
-        <div className="fixed bottom-16 left-1/2 transform -translate-x-1/2 w-full max-w-md p-4">
-          <input
-            type="text"
-            placeholder="🔍 Search characters..."
-            className="w-full p-4 rounded-full  bg-transparent  text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600  duration-300    bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg shadow-lg border border-gray-700  px-5 py-3 hover:bg-gray-900 transition-colors"
-            onChange={(e) => setSearchTerm(e.target.value)}
-            value={searchTerm}
-          />
-        </div>
+        <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 w-full max-w-md p-4">
+        <input
+          type="text"
+          placeholder="🔍 Search characters..."
+          className="w-full p-4 rounded-2xl bg-gray-800 bg-opacity-50 backdrop-blur-lg p-3 mb-1 rounded-2xl shadow-lg backdrop-blur-lg bg-gray-800  text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all duration-300"
+          onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchTerm}
+        />
+      </div>
       )}
     </div>
   );
